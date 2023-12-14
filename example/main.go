@@ -16,6 +16,7 @@ func main() {
 	hand := evaluator.DrawCards(deck, 5)
 	fmt.Println(hand)
 	//開始算牌
-	result := evaluator.Evaluator(hand)
-	fmt.Println(result)
+	result, rank := evaluator.Evaluator(hand)
+	fmt.Println(result) //牌型
+	fmt.Println(rank)   //牌型等級 數字越小表示牌型越大
 }

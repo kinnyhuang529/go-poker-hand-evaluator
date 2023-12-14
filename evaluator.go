@@ -44,10 +44,10 @@ func init() {
 }
 
 // Cactus Kev's Poker Hand Evaluator 演算法
-func Evaluator(input []string) int {
+func Evaluator(input []string) (int, int) {
 	//牌數一定要是5張
 	if len(input) != 5 {
-		return 0
+		return 0, 0
 	}
 
 	var key int
@@ -73,29 +73,29 @@ func Evaluator(input []string) int {
 	//最後看他是什麼牌型
 	switch {
 	case key == 0:
-		return 0 //例外情況
+		return 0, key //例外情況
 	case key == 1:
-		return 1 // 皇家同花順
+		return 1, key // 皇家同花順
 	case key <= 10:
-		return 2 // 同花順
+		return 2, key // 同花順
 	case key <= 166:
-		return 3 // 金剛
+		return 3, key // 金剛
 	case key <= 322:
-		return 4 // 葫蘆
+		return 4, key // 葫蘆
 	case key <= 1599:
-		return 5 // 同花
+		return 5, key // 同花
 	case key <= 1609:
-		return 6 // 順子
+		return 6, key // 順子
 	case key <= 2467:
-		return 7 // 三條
+		return 7, key // 三條
 	case key <= 3325:
-		return 8 // 兩對
+		return 8, key // 兩對
 	case key <= 6185:
-		return 9 // 一對
+		return 9, key // 一對
 	case key <= 7462:
-		return 10 // 高牌
+		return 10, key // 高牌
 	default:
-		return 0 //例外情況
+		return 0, key //例外情況
 	}
 }
 
