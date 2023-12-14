@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	evaluator "github.com/kinnyhuang529/go-poker-hand-evaluator/table"
+	evaluator "github.com/kinnyhuang529/go-poker-hand-evaluator"
 )
 
 func main() {

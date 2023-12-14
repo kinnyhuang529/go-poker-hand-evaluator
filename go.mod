@@ -1,3 +1,3 @@
-module github.com/kinnyhuang529/go-poker-hand-evaluator/table
+module github.com/kinnyhuang529/go-poker-hand-evaluator
 
 go 1.20

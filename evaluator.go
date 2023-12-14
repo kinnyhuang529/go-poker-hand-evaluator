@@ -1,6 +1,6 @@
 package evaluator
 
-import "github.com/kinnyhuang529/go-poker-hand-evaluator/table/tables"
+import "github.com/kinnyhuang529/go-poker-hand-evaluator/tables"
 
 var (
 	Deck = [][]string{
