@@ -73,7 +73,7 @@ func Evaluator(input []string) (int, int) {
 	//最後看他是什麼牌型
 	switch {
 	case key == 0:
-		return 0, key //例外情況
+		return 0, key // 例外情況
 	case key == 1:
 		return 1, key // 皇家同花順
 	case key <= 10:
@@ -95,7 +95,7 @@ func Evaluator(input []string) (int, int) {
 	case key <= 7462:
 		return 10, key // 高牌
 	default:
-		return 0, key //例外情況
+		return 0, key // 例外情況
 	}
 }
 
