@@ -1,5 +1,7 @@
 # go-poker-hand-evaluator
 
+*[English](README.md) ∙ [繁體中文](README_zh-tw.md) ∙ [简体中文](README_zh-cn.md)*
+
 ## Introduction
 `go-poker-hand-evaluator` is a poker card counter that uses Cactus Kev's Poker Hand Evaluator algorithm. It can evaluate the poker card combination in the player's hand and give the corresponding card strength or card type.
 
@@ -46,7 +48,7 @@ func main() {
 ```
 ### Explanation of result
 
- - 0: Exceptional Situation
+- 0: Exceptional Situation
 - 1: Royal Flush
 - 2: Straight Flush
 - 3: Four of a Kind
