@@ -29,24 +29,38 @@ import (
 )
 
 func main() {
-	//Create deck
+	//Build deck
 	deck := evaluator.NewDeck() 
 	//deck: [[d2 d3 d4 d5 d6 d7 d8 d9 dT dJ dQ dK dA] [s2 s3 s4 s5 s6 s7 s8 s9 sT sJ sQ sK sA] [h2 h3 h4 h5 h6 h7 h8 h9 hT hJ hQ hK hA] [c2 c3 c4 c5 c6 c7 c8 c9 cT cJ cQ cK cA]]
 
 	//Shuffle deck
 	evaluator.ShuffleDeck(deck)
-	//deck: [[d2 hQ h3 h8 s7 c5 h7 d5 sQ h4 sJ h5 dA] [c2 cK hK c3 cT d8 s9 dT d7 h9 cJ s8 sA] [sK c6 c7 d6 cQ hT s5 dQ c8 c9 s4 s6 hA] [h6 d9 dK h2 d3 c4 s2 s3 hJ d4 sT dJ cA]]
-	
-	//Draw Cards
-	hand := evaluator.DrawCards(deck, 5)
-	//hand: [d2 hQ h3 h8 s7]
+	//deck: [[cQ d5 c2 c6 s5 hQ s3 s2 h5 s8 cT d2 dA] [h2 c5 c8 h3 d3 dJ hT s4 sQ cK sK h4 sA] [cJ s9 c3 c7 dT sT h9 hK c4 d7 d6 d4 hA] [h8 hJ dK dQ s6 h7 h6 d8 d9 sJ c9 s7 cA]]
 
+	//Draw 2 Cards (hand card)
+	hand := evaluator.DrawCards(deck, 2)
+	//hand: [cQ d5]
+
+	//Draw 5 Cards (public card)
+	public := evaluator.DrawCards(deck, 2)
+	//public:  [c2 c6 s5 hQ s3]
+
+	//hand + public
+	cards := append(hand, public...)
+	//cards:  [cQ d5 c2 c6 s5 hQ s3]
+	
+	var cardType, cardStrength int
+	
 	//Evaluator
-	result, rank := evaluator.Evaluator(hand)
-	//result: 10, rank: 7191
+	cardType, cardStrength = evaluator.Evaluator(public)
+	//cardType: 10, cardStrength: 7214
+
+	//HoldemEvaluator
+	cardType, cardStrength = evaluator.HoldemEvaluator(cards)
+	//cardType: 8, cardStrength: 2794
 }
 ```
-### Explanation of result
+### Explanation of cardType
 
 - 0: Exceptional Situation
 - 1: Royal Flush
@@ -60,7 +74,7 @@ func main() {
 - 9: One Pair
 - 10: High Card
 
-### Explanation of rank
+### Explanation of cardStrength
 The range is from 1 to 7462, the smaller the number, the stronger the card.
 
 ## Links
