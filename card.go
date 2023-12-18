@@ -2,6 +2,7 @@ package evaluator
 
 import "math/rand"
 
+// NewDeck Build a deck
 func NewDeck() [][]string {
 	deck := [][]string{
 		{"d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "dT", "dJ", "dQ", "dK", "dA"}, //方塊 258~270
@@ -12,6 +13,7 @@ func NewDeck() [][]string {
 	return deck
 }
 
+// ShuffleDeck shuffle deck
 func ShuffleDeck(deck [][]string) {
 	for i := 0; i < 4; i++ {
 		for j := 0; j < 12; j++ {
@@ -24,6 +26,7 @@ func ShuffleDeck(deck [][]string) {
 	}
 }
 
+// DrawCards draw cards
 func DrawCards(deck [][]string, count int) []string {
 	hand := make([]string, count)
 
