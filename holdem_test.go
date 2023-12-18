@@ -53,4 +53,5 @@ func Test_HoldemEvaluator(t *testing.T) {
 		t.Error("Test_HoldemEvaluator: High Card error! ")
 		return
 	}
+	t.Log("Test_HoldemEvaluator: success! ")
 }

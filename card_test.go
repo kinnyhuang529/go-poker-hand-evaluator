@@ -16,10 +16,10 @@ func Test_NewDeck(t *testing.T) {
 	deck := NewDeck()
 
 	if !reflect.DeepEqual(deck, TestDeck) {
-		t.Error("Test_NewDeck: 牌組內容錯誤")
+		t.Error("Test_NewDeck: Deck content error! ")
 		return
 	}
-	t.Log("Test_NewDeck: 成功")
+	t.Log("Test_NewDeck: success! ")
 }
 
 func Test_ShuffleDeck(t *testing.T) {
@@ -27,17 +27,17 @@ func Test_ShuffleDeck(t *testing.T) {
 	deck := NewDeck()
 	ShuffleDeck(deck)
 	if reflect.DeepEqual(deck, TestDeck) {
-		t.Error("Test_ShuffleDeck: 洗牌錯誤")
+		t.Error("Test_ShuffleDeck: shuffle deck error! ")
 		return
 	}
-	t.Log("Test_ShuffleDeck: 成功")
+	t.Log("Test_ShuffleDeck: success! ")
 }
 
 func Test_DrawCards(t *testing.T) {
 	deck := NewDeck()
 	hand := DrawCards(deck, 5)
 	if len(hand) != 5 {
-		t.Error("Test_DrawCards: 手牌長度錯誤")
+		t.Error("Test_DrawCards: Wrong hand card length! ")
 		return
 	}
 	for _, h := range hand {
@@ -50,9 +50,9 @@ func Test_DrawCards(t *testing.T) {
 			}
 		}
 		if !check {
-			t.Error("Test_DrawCards: 手牌錯誤")
+			t.Error("Test_DrawCards: Wrong hand card! ")
 			return
 		}
 	}
-	t.Log("Test_DrawCards: 成功")
+	t.Log("Test_DrawCards: success! ")
 }
