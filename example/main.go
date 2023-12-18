@@ -8,15 +8,25 @@ import (
 func main() {
 	//建立牌組
 	deck := evaluator.NewDeck()
-	fmt.Println(deck)
+	fmt.Println("deck: ", deck)
 	//洗牌
 	evaluator.ShuffleDeck(deck)
-	fmt.Println(deck)
+	fmt.Println("shuffle deck: ", deck)
 	//抽牌
 	hand := evaluator.DrawCards(deck, 5)
-	fmt.Println(hand)
-	//開始算牌
-	result, rank := evaluator.Evaluator(hand)
-	fmt.Println(result) //牌型
-	fmt.Println(rank)   //牌型等級 數字越小表示牌型越大
+	fmt.Println("hand: ", hand)
+	//開始算牌 5張
+	cardType, cardStrength := evaluator.Evaluator(hand)
+	fmt.Println("5 cards card type: ", cardType)         //牌型
+	fmt.Println("5 cards card strength: ", cardStrength) //牌力 牌力數值越小表示牌型越大
+	//公牌
+	public := evaluator.DrawCards(deck, 2)
+	fmt.Println("public: ", public)
+	//把手牌+公牌
+	cards := append(hand, public...)
+	fmt.Println("cards: ", cards)
+	//開始算牌 7張
+	cardType, cardStrength = evaluator.HoldemEvaluator(cards)
+	fmt.Println("7 cards card type: ", cardType)         //牌型
+	fmt.Println("7 cards card strength: ", cardStrength) //牌力 牌力數值越小表示牌型越大
 }
