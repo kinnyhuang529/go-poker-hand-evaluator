@@ -1,6 +1,9 @@
 package evaluator
 
-import "github.com/kinnyhuang529/go-poker-hand-evaluator/tables"
+import (
+	"github.com/kinnyhuang529/go-poker-hand-evaluator/tables"
+	"sort"
+)
 
 var (
 	Deck = [][]string{
@@ -65,11 +68,12 @@ func Evaluator(input []string) (int, int) {
 			//質數相成
 			prime := Poker[input[0]].P * Poker[input[1]].P * Poker[input[2]].P * Poker[input[3]].P * Poker[input[4]].P
 			//先從products表找出index
-			productsIndex := binarySearch(tables.Products, prime)
+			productsIndex := sort.SearchInts(tables.Products, prime)
 			//再去value表找出對應的key
 			key = tables.Values[productsIndex]
 		}
 	}
+
 	//最後看他是什麼牌型
 	switch {
 	case key == 0:
@@ -97,20 +101,4 @@ func Evaluator(input []string) (int, int) {
 	default:
 		return 0, key // 例外情況
 	}
-}
-
-// 二分搜尋
-func binarySearch(arr []int, key int) int {
-	low, high := 0, len(arr)-1
-	for low <= high {
-		mid := low + (high-low)/2
-		if arr[mid] == key {
-			return mid
-		} else if key < arr[mid] {
-			high = mid - 1
-		} else if key > arr[mid] {
-			low = mid + 1
-		}
-	}
-	return -1
 }
