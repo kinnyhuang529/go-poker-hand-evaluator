@@ -16,7 +16,7 @@ func NewDeck() [][]string {
 // ShuffleDeck shuffle deck
 func ShuffleDeck(deck [][]string) {
 	for i := 0; i < 4; i++ {
-		for j := 0; j < 12; j++ {
+		for j := 0; j < 13; j++ {
 			suitRandIndex := rand.Intn(3)
 			valueRandIndex := rand.Intn(11)
 			tmp := deck[i][j]
