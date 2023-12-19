@@ -6,36 +6,36 @@ import (
 )
 
 func main() {
-	//建立牌組
+	//Build deck
 	deck := evaluator.NewDeck()
 	fmt.Println("deck: ", deck)
 
-	//洗牌
+	//Shuffle deck
 	evaluator.ShuffleDeck(deck)
 	fmt.Println("shuffle deck: ", deck)
 
-	//手牌
+	//Draw 2 Cards (hand card)
 	hand := evaluator.DrawCards(deck, 2)
 	fmt.Println("hand: ", hand)
 
-	//公牌
+	//Draw 5 Cards (public card)
 	public := evaluator.DrawCards(deck, 5)
 	fmt.Println("public: ", public)
 
-	//把手牌+公牌
+	//hand + public
 	cards := append(hand, public...)
 	fmt.Println("cards: ", cards)
 
-	//牌組剩餘數量
+	//The remaining number of cards in the deck.
 	fmt.Println("The remaining number of cards in the deck: ", evaluator.NumberOfCardsInTheDeck(deck))
 
 	var cardType, cardStrength int
-	//開始算牌 5張
+	//Start evaluating cards (5 cards)
 	cardType, cardStrength = evaluator.Evaluator(public)
-	fmt.Println("5 cards card type: ", cardType)         //牌型
-	fmt.Println("5 cards card strength: ", cardStrength) //牌力 牌力數值越小表示牌型越大
-	//開始算牌 7張
+	fmt.Println("5 cards card type: ", cardType)         //card type
+	fmt.Println("5 cards card strength: ", cardStrength) //card strength. The smaller the card strength value, the larger the card type.
+	//Start evaluating cards (7 cards)
 	cardType, cardStrength = evaluator.HoldemEvaluator(cards)
-	fmt.Println("7 cards card type: ", cardType)         //牌型
-	fmt.Println("7 cards card strength: ", cardStrength) //牌力 牌力數值越小表示牌型越大
+	fmt.Println("7 cards card type: ", cardType)         //card type
+	fmt.Println("7 cards card strength: ", cardStrength) //card strength. The smaller the card strength value, the larger the card type.
 }
