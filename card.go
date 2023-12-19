@@ -28,6 +28,10 @@ func ShuffleDeck(deck [][]string) {
 
 // DrawCards draw cards.
 func DrawCards(deck [][]string, count int) []string {
+	if count > NumberOfCardsInTheDeck(deck) {
+		return nil
+	}
+
 	hand := make([]string, count)
 
 	for i := 0; i < count; i++ {
