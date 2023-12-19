@@ -9,18 +9,25 @@ func main() {
 	//建立牌組
 	deck := evaluator.NewDeck()
 	fmt.Println("deck: ", deck)
+
 	//洗牌
 	evaluator.ShuffleDeck(deck)
 	fmt.Println("shuffle deck: ", deck)
+
 	//手牌
 	hand := evaluator.DrawCards(deck, 2)
 	fmt.Println("hand: ", hand)
+
 	//公牌
 	public := evaluator.DrawCards(deck, 5)
 	fmt.Println("public: ", public)
+
 	//把手牌+公牌
 	cards := append(hand, public...)
 	fmt.Println("cards: ", cards)
+
+	//牌組剩餘數量
+	fmt.Println("The remaining number of cards in the deck: ", evaluator.NumberOfCardsInTheDeck(deck))
 
 	var cardType, cardStrength int
 	//開始算牌 5張
