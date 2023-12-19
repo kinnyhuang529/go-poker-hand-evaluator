@@ -46,7 +46,7 @@ func init() {
 	}
 }
 
-// Evaluator Cactus Kev's Poker Hand Evaluator 演算法
+// Evaluator Cactus Kev's Poker Hand Evaluator algorithm.
 func Evaluator(input []string) (int, int) {
 	//牌數一定要是5張
 	if len(input) != 5 {

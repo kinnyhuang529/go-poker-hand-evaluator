@@ -25,7 +25,7 @@ var t7c5 = [21][7]int{
 	{2, 3, 4, 5, 6, 0, 1},
 }
 
-// HoldemEvaluator 7 cards to calculate card type and strength
+// HoldemEvaluator 7 cards to calculate card type and strength.
 func HoldemEvaluator(input []string) (int, int) {
 	//牌數一定要是7張
 	if len(input) != 7 {
