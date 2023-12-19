@@ -45,3 +45,12 @@ func DrawCards(deck [][]string, count int) []string {
 
 	return hand
 }
+
+// NumberOfCardsInTheDeck The remaining number of cards in the deck.
+func NumberOfCardsInTheDeck(deck [][]string) int {
+	number := 0
+	for _, card := range deck {
+		number += len(card)
+	}
+	return number
+}
