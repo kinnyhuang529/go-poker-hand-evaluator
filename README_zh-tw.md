@@ -56,8 +56,8 @@ func main() {
 	//cardType: 10, cardStrength: 7214
 
 	//德州撲克算牌器
-	cardType, cardStrength = evaluator.HoldemEvaluator(cards)
-	//cardType: 8, cardStrength: 2794
+	cardType, cardStrength, highest = evaluator.HoldemEvaluator(cards)
+	//cardType: 8, cardStrength: 2794, highest: [cQ d5 c6 s5 hQ]
 }
 ```
 ### cardType 說明
