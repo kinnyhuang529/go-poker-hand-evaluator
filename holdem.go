@@ -26,10 +26,10 @@ var t7c5 = [21][7]int{
 }
 
 // HoldemEvaluator 7 cards to calculate card type and strength.
-func HoldemEvaluator(input []string) (int, int) {
+func HoldemEvaluator(input []string) (int, int, []string) {
 	//牌數一定要是7張
 	if len(input) != 7 {
-		return 0, 0
+		return 0, 0, nil
 	}
 
 	var tmpInput []string
@@ -38,7 +38,11 @@ func HoldemEvaluator(input []string) (int, int) {
 	var minCardType = 10       //最小的牌型
 	var minCardStrength = 7462 //最小的牌力
 
+	var highest []string //最大牌型的組成
+	highest = make([]string, 5)
+
 	for _, item := range t7c5 {
+
 		tmpInput[0] = input[item[0]]
 		tmpInput[1] = input[item[1]]
 		tmpInput[2] = input[item[2]]
@@ -47,9 +51,10 @@ func HoldemEvaluator(input []string) (int, int) {
 
 		cardType, cardStrength := Evaluator(tmpInput)
 		if cardStrength < minCardStrength {
+			copy(highest, tmpInput)
 			minCardStrength = cardStrength
 			minCardType = cardType
 		}
 	}
-	return minCardType, minCardStrength
+	return minCardType, minCardStrength, highest
 }
