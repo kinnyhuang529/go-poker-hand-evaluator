@@ -1,6 +1,8 @@
 package evaluator
 
-import "math/rand"
+import (
+	"math/rand"
+)
 
 // NewDeck Build a deck.
 func NewDeck() [][]string {
@@ -14,20 +16,20 @@ func NewDeck() [][]string {
 }
 
 // ShuffleDeck shuffle deck.
-func ShuffleDeck(deck [][]string) {
+func ShuffleDeck(deck *[][]string) {
 	for i := 0; i < 4; i++ {
 		for j := 0; j < 13; j++ {
 			suitRandIndex := rand.Intn(3)
 			valueRandIndex := rand.Intn(11)
-			tmp := deck[i][j]
-			deck[i][j] = deck[suitRandIndex][valueRandIndex]
-			deck[suitRandIndex][valueRandIndex] = tmp
+			tmp := (*deck)[i][j]
+			(*deck)[i][j] = (*deck)[suitRandIndex][valueRandIndex]
+			(*deck)[suitRandIndex][valueRandIndex] = tmp
 		}
 	}
 }
 
 // DrawCards draw cards.
-func DrawCards(deck [][]string, count int) []string {
+func DrawCards(deck *[][]string, count int) []string {
 	if count > NumberOfCardsInTheDeck(deck) {
 		return nil
 	}
@@ -36,24 +38,23 @@ func DrawCards(deck [][]string, count int) []string {
 
 	for i := 0; i < count; i++ {
 		// 將第一張牌加入手牌
-		hand[i] = deck[0][0]
+		hand[i] = (*deck)[0][0]
 
 		// 從牌組中移除已抽取的牌
-		deck[0] = deck[0][1:]
+		(*deck)[0] = (*deck)[0][1:]
 
 		// 如果該花色的牌已經抽完，則從牌組中移除該花色
-		if len(deck[0]) == 0 {
-			deck = deck[1:]
+		if len((*deck)[0]) == 0 {
+			*deck = (*deck)[1:]
 		}
 	}
-
 	return hand
 }
 
 // NumberOfCardsInTheDeck The remaining number of cards in the deck.
-func NumberOfCardsInTheDeck(deck [][]string) int {
+func NumberOfCardsInTheDeck(deck *[][]string) int {
 	number := 0
-	for _, card := range deck {
+	for _, card := range *deck {
 		number += len(card)
 	}
 	return number

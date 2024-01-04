@@ -11,15 +11,15 @@ func main() {
 	fmt.Println("deck: ", deck)
 
 	//Shuffle deck
-	evaluator.ShuffleDeck(deck)
+	evaluator.ShuffleDeck(&deck)
 	fmt.Println("shuffle deck: ", deck)
 
 	//Draw 2 Cards (hand card)
-	hand := evaluator.DrawCards(deck, 2)
+	hand := evaluator.DrawCards(&deck, 2)
 	fmt.Println("hand: ", hand)
 
 	//Draw 5 Cards (public card)
-	public := evaluator.DrawCards(deck, 5)
+	public := evaluator.DrawCards(&deck, 5)
 	fmt.Println("public: ", public)
 
 	//hand + public
@@ -27,7 +27,7 @@ func main() {
 	fmt.Println("cards: ", cards)
 
 	//The remaining number of cards in the deck.
-	fmt.Println("The remaining number of cards in the deck: ", evaluator.NumberOfCardsInTheDeck(deck))
+	fmt.Println("The remaining number of cards in the deck: ", evaluator.NumberOfCardsInTheDeck(&deck))
 
 	var cardType, cardStrength int
 	//Start evaluating cards (5 cards)
