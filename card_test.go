@@ -25,7 +25,7 @@ func Test_NewDeck(t *testing.T) {
 func Test_ShuffleDeck(t *testing.T) {
 
 	deck := NewDeck()
-	ShuffleDeck(deck)
+	ShuffleDeck(&deck)
 	if reflect.DeepEqual(deck, TestDeck) {
 		t.Error("Test_ShuffleDeck: shuffle deck error! ")
 		return
@@ -35,7 +35,7 @@ func Test_ShuffleDeck(t *testing.T) {
 
 func Test_DrawCards(t *testing.T) {
 	deck := NewDeck()
-	hand := DrawCards(deck, 5)
+	hand := DrawCards(&deck, 5)
 	if len(hand) != 5 {
 		t.Error("Test_DrawCards: Wrong hand card length! ")
 		return
