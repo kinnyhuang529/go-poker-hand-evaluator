@@ -36,8 +36,7 @@ func main() {
 	fmt.Println("5 cards card strength: ", cardStrength) //card strength. The smaller the card strength value, the larger the card type.
 
 	//Start evaluating cards (7 cards)
-	ttt := []string{"cQ", "d5", "c2", "c6", "s5", "hQ", "s3"}
-	cardType, cardStrength, highest := evaluator.HoldemEvaluator(ttt)
+	cardType, cardStrength, highest := evaluator.HoldemEvaluator(cards)
 	fmt.Println("7 cards card type: ", cardType)         //card type
 	fmt.Println("7 cards card strength: ", cardStrength) //card strength. The smaller the card strength value, the larger the card type.
 	fmt.Println("7 cards best 5 card: ", highest)        //highest. Best Five-Card.
